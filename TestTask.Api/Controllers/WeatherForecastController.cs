@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestTask.Api.Models;
 
 namespace TestTask.Api.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestTask.Api.Models
+namespace TestTask.Api.Domain
 {
     public class Favorite
     {
@@ -8,6 +8,7 @@ namespace TestTask.Api.Models
 
         public string Name { get; set; }
 
-        public Payment Payment { get; set; }
+        public Guid PaymentId { get; set; }
+        public  Payment Payment { get; set; }
     }
 }
