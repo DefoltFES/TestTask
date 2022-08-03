@@ -7,6 +7,7 @@ namespace TestTask.Api.Domain
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string? Image { get; set; }
+        public string? Image { get; set; }       
+        public bool CanBeFavorite { get; set; }
     }
 }

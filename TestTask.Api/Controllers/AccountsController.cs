@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using TestTask.Api.Application.Interfaces;
 using TestTask.Api.Domain;
 
@@ -19,6 +20,13 @@ namespace TestTask.Api.Controllers
         {
            _accountRepository.Add(account);
         }
+
+        [HttpPost("AddMany")]
+        public void AddMany(ICollection<Account> accounts)
+        {
+            _accountRepository.AddMany(accounts);
+        }
+
 
         [HttpGet]
         public ActionResult<Account> Get(string numberAccount)

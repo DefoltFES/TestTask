@@ -11,8 +11,11 @@ namespace TestTask.Api.Application.Interfaces
     {
         public void Add(Payment payment);
 
+        public void AddMany(ICollection<Payment> payment);
+
         public void Delete(Payment payment);
 
-        public void Get(string namePayment);
+        public ICollection<Payment> GetAll();
+
     }
 }

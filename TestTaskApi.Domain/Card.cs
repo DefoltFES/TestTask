@@ -6,6 +6,10 @@ namespace TestTask.Api.Domain
 {
     public class Card
     {
+        public  Card()
+        {
+            Operations=new HashSet<Operation>();
+        }
         public Guid Id { get; set; }
 
         [MaxLength(20)]

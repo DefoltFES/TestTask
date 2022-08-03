@@ -8,14 +8,55 @@
         Title="Админ панель" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="280"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border  BorderThickness="1" >
-            <StackPanel Grid.Column="0">
-                <Button x:Name="Generate" BorderBrush="Aqua" Background="Transparent"  Margin="10" Content="Сгенерировать данные"></Button>
-                <Button x:Name="Favorite" BorderBrush="Aqua" Background="Transparent" Margin="10" Content="Избранное" Cursor="Hand"></Button>
+        <Border Grid.Column="0" Padding="10"  BorderThickness="1" >
+            <StackPanel >
+                <Button Click="Generate_Click" x:Name="Generate" BorderBrush="Aqua" Background="Transparent"  Margin="10" Content="Сгенерировать данные" Cursor="Hand"></Button>
+                <StackPanel>
+                    <TextBlock Text="Название"></TextBlock>
+                    <TextBox x:Name="NamePayment" Padding="4" Style="{DynamicResource MaterialDesignOutlinedTextBox}"></TextBox>
+                    <TextBlock  Text="Платеж"></TextBlock>
+                    <ComboBox Margin="0,10,0,0" DisplayMemberPath="Name" x:Name="TypePayments"></ComboBox>
+                </StackPanel>
+                <Button Click="CreateOrEditFavorite_Click"   x:Name="CreateOrEditFavorite" BorderBrush="Aqua" Background="Transparent"  Margin="10" Content="Добавить в избраное"></Button>
+               
             </StackPanel>
         </Border>
+        <ScrollViewer  Grid.Column="1">
+        <StackPanel>
+           
+            <TextBlock Margin="10,10,0,0" FontSize="20" Text="Избранное"></TextBlock>
+            <DataGrid x:Name="ListFavorites"  AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+                <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id}" Header="Id"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Название"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Payment.Name}"  Header="Название платежа"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Изображение">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                  <Image Stretch="UniformToFill" Height="40" Width="40" Source="{Binding Payment.Image,TargetNullValue={StaticResource DefoltImage}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="DeleteClick" Background="Red" Foreground="White" Content="Удалить"></Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Background="Aqua" Foreground="White" Content="Изменить"></Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

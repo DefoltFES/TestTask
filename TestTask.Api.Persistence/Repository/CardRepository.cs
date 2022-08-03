@@ -19,19 +19,24 @@ namespace TestTask.Api.Persistence.Repository
 
         public void Add(Card card)
         {
-            throw new NotImplementedException();
+            _context.Cards.Add(card);
+            _context.SaveChanges();
         }
 
         public void AddMany(ICollection<Card> cards)
         {
-            throw new NotImplementedException();
+            _context.Cards.AddRange(cards);
         }
 
         public void Delete(string numberCard)
         {
-            throw new NotImplementedException();
+            var card = _context.Cards.Where(x => x.Number == numberCard).FirstOrDefault();
+            if (card != null)
+            {
+                _context.Cards.Remove(card);               
+            }
+            
         }
-
         public Card Get(string numberCard)
         {
             return _context.Cards.Where(x => x.Number == numberCard).FirstOrDefault();

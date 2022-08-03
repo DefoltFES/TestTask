@@ -11,9 +11,12 @@ namespace TestTask.Api.Application.Interfaces
     {
         public void Add(Favorite favorite);
 
-        public void Update(Favorite favorite);
 
-        public void Remove(Favorite favorite);
+        public void AddMany(ICollection<Favorite> favorites);
+
+        public ICollection<Favorite> GetAll();
+
+        public void Remove(Guid favorite);
 
         public void Edit(Favorite favorite);
 

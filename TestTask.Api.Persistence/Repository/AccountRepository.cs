@@ -27,7 +27,7 @@ namespace TestTask.Api.Persistence.Repository
         public void AddMany(ICollection<Account> accounts)
         {
             accounts.ToList().ForEach(x=>x.Id=Guid.NewGuid());
-            _context.AddRange(accounts);
+            _context.Accounts.AddRange(accounts);
             _context.SaveChanges();
         }
 

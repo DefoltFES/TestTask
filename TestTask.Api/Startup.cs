@@ -31,6 +31,12 @@ namespace TestTask.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<IPaymentRepository, PaymemtRepository>();
+            services.AddTransient<IFavoriteReposiory, FavoriteRepository>();
+            services.AddTransient<IOperationRepository, OperationRepository>();
+            services.AddTransient<ICardRepository, CardRepository>();
+
+
             services.AddControllers();
             services.AddDbContext<TestTaskDbContext>(x=>x.UseSqlite(Configuration.GetConnectionString("TestTaskContext")));
             services.AddSwaggerGen(c =>

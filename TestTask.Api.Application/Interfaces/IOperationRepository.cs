@@ -11,11 +11,12 @@ namespace TestTask.Api.Application.Interfaces
     {
         public void Add(Operation operation);
 
-        public ICollection<Operation> GetAll(Card account);
+        public void AddMany(ICollection<Operation> operations);
 
-        public void Delete(Operation operation);
+        public ICollection<Operation> GetAll();
 
-        public void Remove(Operation operation);
+        
+
 
     }
 }
